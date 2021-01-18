@@ -1,0 +1,6 @@
+FSharp.Core
+Lmc.EnvironmentModel
+Lmc.Metrics
+Lmc.Profiler.Common
+Lmc.ServiceIdentification
+Lmc.State

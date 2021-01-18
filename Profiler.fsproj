@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <OutputType>Library</OutputType>
+        <PackageId>Lmc.Profiler</PackageId>
+        <Version>0.0.0</Version>
+        <RepositoryUrl>https://bitbucket.lmc.cz/projects/ARCHI/repos/fprofiler/browse</RepositoryUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="AssemblyInfo.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="src/Utils.fs" />
+
+        <Compile Include="src/Errors.fs" />
+        <Compile Include="src/Resources.fs" />
+        <Compile Include="src/Queries.fs" />
+        <Compile Include="src/Profiler.fs" />
+    </ItemGroup>
+
+    <Import Project=".paket\Paket.Restore.targets" />
+</Project>

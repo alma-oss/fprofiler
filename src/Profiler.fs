@@ -50,7 +50,18 @@ module Profiler =
         }
 
     let init currentApplication (ApplicationValues applicationValues) currentEnvironment debug =
+        let queriesCount = Queries.count()
         let errorsCount = Errors.count()
+
+        let isGitLabel (Profiler.Label label) =
+            label.ToLower().StartsWith "git "
+
+        let gitValues, otherApplicationValues =
+            applicationValues
+            |> Map.toList
+            |> List.partition (fst >> isGitLabel)
+
+        let createDetail kv = kv ||> Profiler.Detail.createItem
 
         Profiler.Toolbar [
             yield {
@@ -66,25 +77,31 @@ module Profiler =
                     Profiler.Detail.createItem (Profiler.Label "Debug") (Profiler.Value debug) |> Profiler.Detail.addColor (if debug.Contains "Dev" then Profiler.Color.Yellow else Profiler.Color.Green)
 
                     yield!
-                        applicationValues
-                        |> Map.toList
-                        |> List.map (fun (label, value) ->
-                            Profiler.Detail.createItem label value
-                        )
+                        otherApplicationValues
+                        |> List.map createDetail
                 ]
             }
 
             yield {
                 Id = Profiler.Id "Git"
                 Label = Some (Profiler.Label "Git")
-                Value = Profiler.Value AssemblyVersionInformation.AssemblyMetadata_gitbranch
+                Value =
+                    seq {
+                        applicationValues
+                        |> Map.tryFind (Profiler.Label "Git Branch")
+
+                        gitValues
+                        |> List.tryHead
+                        |> Option.map snd
+
+                        Some (Profiler.Value "Git")
+                    }
+                    |> Seq.pick id
+
                 Unit = None
                 ItemColor = None
                 StatusIcon = None
-                Detail = [
-                    Profiler.Detail.createItem (Profiler.Label "Git Branch") (Profiler.Value AssemblyVersionInformation.AssemblyMetadata_gitbranch)
-                    Profiler.Detail.createItem (Profiler.Label "Git Commit") (Profiler.Value AssemblyVersionInformation.AssemblyMetadata_gitcommit)
-                ]
+                Detail = gitValues |> List.map createDetail
             }
 
             yield {
@@ -116,21 +133,22 @@ module Profiler =
                     )
             }
 
-            yield {
-                Id = Profiler.Id "Queries"
-                Label = None
-                Value = Profiler.Value (Queries.count() |> string)
-                Unit = Some (Profiler.Unit "Queries")
-                ItemColor = None
-                StatusIcon = None
-                Detail =
-                    Queries.values ()
-                    |> List.takeUpTo 10
-                    |> List.map (function
-                        | Query (Ok queryData) -> queryData |> queryItem Profiler.Green
-                        | Query (Error queryData) -> queryData |> queryItem Profiler.Red
-                    )
-            }
+            if queriesCount > 0 then
+                yield {
+                    Id = Profiler.Id "Queries"
+                    Label = None
+                    Value = Profiler.Value (queriesCount |> string)
+                    Unit = Some (Profiler.Unit "Queries")
+                    ItemColor = None
+                    StatusIcon = None
+                    Detail =
+                        Queries.values ()
+                        |> List.takeUpTo 10
+                        |> List.map (function
+                            | Query (Ok queryData) -> queryData |> queryItem Profiler.Green
+                            | Query (Error queryData) -> queryData |> queryItem Profiler.Red
+                        )
+                }
 
             if errorsCount > 0 then
                 yield {

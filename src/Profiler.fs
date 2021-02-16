@@ -13,7 +13,7 @@ module Profiler =
     open Resources
     open Errors
 
-    type ApplicationValues = ApplicationValues of Map<Profiler.Label, Profiler.Value>
+    type ApplicationValues = ApplicationValues of (Profiler.Label * Profiler.Value) list
 
     let private queryItem color query: Profiler.DetailItem =
         let { Target = (Target (method, Url target)); Created = created } = query.Target
@@ -58,7 +58,6 @@ module Profiler =
 
         let gitValues, otherApplicationValues =
             applicationValues
-            |> Map.toList
             |> List.partition (fst >> isGitLabel)
 
         let createDetail kv = kv ||> Profiler.Detail.createItem
@@ -88,7 +87,8 @@ module Profiler =
                 Value =
                     seq {
                         applicationValues
-                        |> Map.tryFind (Profiler.Label "Git Branch")
+                        |> List.tryFind (fst >> (=) (Profiler.Label "Git Branch"))
+                        |> Option.map snd
 
                         gitValues
                         |> List.tryHead

@@ -1,31 +1,31 @@
 RESTRICTION: == net50
 NUGET
   remote: https://api.nuget.org/v3/index.json
-    FSharp.Core (5.0)
+    FSharp.Core (5.0.1)
     Suave (2.6)
       FSharp.Core
   remote: paket-files/git_bitbucket.lmc.cz7999/archi/nuget-server/nuget
-    Lmc.EnvironmentModel (3.0.0)
+    Lmc.EnvironmentModel (3.2.0)
+      FSharp.Core (>= 5.0.1)
+      Lmc.ErrorHandling (>= 5.0)
+      Lmc.ServiceIdentification (>= 5.2)
+    Lmc.ErrorHandling (5.0.0)
       FSharp.Core (>= 5.0)
-      Lmc.ErrorHandling (>= 4.0)
-      Lmc.ServiceIdentification (>= 5.0)
-    Lmc.ErrorHandling (4.1.0)
-      FSharp.Core (>= 5.0)
-    Lmc.Metrics (5.0.0)
-      FSharp.Core (>= 5.0)
-      Lmc.ErrorHandling (>= 4.0)
-      Lmc.ServiceIdentification (>= 5.0)
+    Lmc.Metrics (5.1.0)
+      FSharp.Core (>= 5.0.1)
+      Lmc.ErrorHandling (>= 5.0)
+      Lmc.ServiceIdentification (>= 5.2)
       Suave (>= 2.5.6)
-    Lmc.Profiler.Common (3.0.0)
+    Lmc.Profiler.Common (3.1.0)
       FSharp.Core (>= 5.0)
-    Lmc.ServiceIdentification (5.0.1)
+    Lmc.ServiceIdentification (5.2.0)
       FSharp.Core (>= 5.0)
-    Lmc.State (4.0.0)
-      FSharp.Core (>= 5.0)
-      Lmc.ErrorHandling (>= 4.0)
+    Lmc.State (4.1.0)
+      FSharp.Core (>= 5.0.1)
+      Lmc.ErrorHandling (>= 5.0)
 GIT
   remote: ssh://git@bitbucket.lmc.cz:7999/archi/nuget-server.git
-     (3c8873c35f5f5a7905e530a0144098dc3de572c9)
+     (09740c07ac8e61eb7e8a1d47b56bd3d36bb44e55)
       path: /nuget/
 GROUP Build
 STORAGE: NONE

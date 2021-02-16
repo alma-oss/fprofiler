@@ -5,11 +5,11 @@ nuget FSharp.Core
 
 git ssh://git@bitbucket.lmc.cz:7999/archi/nuget-server.git master Packages: /nuget/
 # LMC Nuget dependencies:
-nuget Lmc.EnvironmentModel ~> 3.0
-nuget Lmc.Metrics ~> 5.0
-nuget Lmc.Profiler.Common ~> 3.0
-nuget Lmc.ServiceIdentification ~> 5.0
-nuget Lmc.State ~> 4.0
+nuget Lmc.EnvironmentModel ~> 3.2
+nuget Lmc.Metrics ~> 5.1
+nuget Lmc.Profiler.Common ~> 3.1
+nuget Lmc.ServiceIdentification ~> 5.2
+nuget Lmc.State ~> 4.1
 
 // [ FAKE GROUP ]
 group Build

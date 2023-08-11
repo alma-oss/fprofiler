@@ -1,15 +1,15 @@
-framework: net6.0
+framework: net7.0
 
 source https://api.nuget.org/v3/index.json
-nuget FSharp.Core ~> 6.0
+nuget FSharp.Core ~> 7.0
 
 git ssh://git@bitbucket.lmc.cz:7999/archi/nuget-server.git master Packages: /nuget/
 # LMC Nuget dependencies:
-nuget Lmc.EnvironmentModel ~> 4.0
-nuget Lmc.Metrics ~> 6.0
-nuget Lmc.Profiler.Common ~> 4.0
-nuget Lmc.ServiceIdentification ~> 6.0
-nuget Lmc.State ~> 5.0
+nuget Lmc.EnvironmentModel ~> 5.0
+nuget Lmc.Metrics ~> 7.0
+nuget Lmc.Profiler.Common ~> 5.0
+nuget Lmc.ServiceIdentification ~> 7.0
+nuget Lmc.State ~> 6.0
 
 // [ FAKE GROUP ]
 group Build
@@ -17,7 +17,9 @@ group Build
     source https://api.nuget.org/v3/index.json
     nuget Fake.DotNet.Cli
     nuget Fake.IO.FileSystem
+    nuget Fake.IO.Zip
     nuget Fake.Core.Target
+    nuget Fake.Core.UserInput
     nuget Fake.DotNet.AssemblyInfoFile
     nuget Fake.Core.ReleaseNotes
     nuget Fake.Tools.Git

@@ -1,9 +1,9 @@
-namespace Lmc.Profiler
+namespace Alma.Profiler
 
 module Errors =
     open System
-    open Lmc.Metrics
-    open Lmc.State.ConcurrentStorage
+    open Alma.Metrics
+    open Alma.State.ConcurrentStorage
 
     type ErrorMessage = string
 

@@ -1,9 +1,9 @@
-namespace Lmc.Profiler
+namespace Alma.Profiler
 
 module Resources =
-    open Lmc.Metrics
-    open Lmc.ServiceIdentification
-    open Lmc.State.ConcurrentStorage
+    open Alma.Metrics
+    open Alma.ServiceIdentification
+    open Alma.State.ConcurrentStorage
 
     type Resources = Resources of State<Instance, ResourceAvailability>
 

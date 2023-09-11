@@ -1,4 +1,4 @@
-namespace Lmc.Profiler
+namespace Alma.Profiler
 
 [<RequireQualifiedAccess>]
 module List =

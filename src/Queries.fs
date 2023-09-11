@@ -1,9 +1,9 @@
-namespace Lmc.Profiler
+namespace Alma.Profiler
 
 module Queries =
     open System
-    open Lmc.Metrics
-    open Lmc.State.ConcurrentStorage
+    open Alma.Metrics
+    open Alma.State.ConcurrentStorage
 
     type Url = Url of string
     type HTTPMethod =

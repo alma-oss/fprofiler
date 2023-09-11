@@ -1,13 +1,13 @@
-namespace Lmc.Profiler
+namespace Alma.Profiler
 
 [<RequireQualifiedAccess>]
 module Profiler =
     open System
-    open Lmc.Metrics
-    open Lmc.ServiceIdentification
-    open Lmc.EnvironmentModel
+    open Alma.Metrics
+    open Alma.ServiceIdentification
+    open Alma.EnvironmentModel
 
-    open Lmc.Profiler.Common
+    open Alma.Profiler.Common
 
     open Queries
     open Resources

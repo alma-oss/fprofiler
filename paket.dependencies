@@ -3,13 +3,13 @@ framework: net7.0
 source https://api.nuget.org/v3/index.json
 nuget FSharp.Core ~> 7.0
 
-git ssh://git@bitbucket.lmc.cz:7999/archi/nuget-server.git master Packages: /nuget/
+source https://nuget.pkg.github.com/almacareer/index.json username: "%PRIVATE_FEED_USER%" password: "%PRIVATE_FEED_PASS%"
 # LMC Nuget dependencies:
-nuget Lmc.EnvironmentModel ~> 5.0
-nuget Lmc.Metrics ~> 7.0
-nuget Lmc.Profiler.Common ~> 5.0
-nuget Lmc.ServiceIdentification ~> 7.0
-nuget Lmc.State ~> 6.0
+nuget Alma.EnvironmentModel ~> 6.0
+nuget Alma.Metrics ~> 8.0
+nuget Alma.Profiler.Common ~> 6.0
+nuget Alma.ServiceIdentification ~> 8.0
+nuget Alma.State ~> 7.0
 
 // [ FAKE GROUP ]
 group Build

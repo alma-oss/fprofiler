@@ -20,7 +20,7 @@ module Resources =
                     (instance |> Instance.concat "-")
                     resourceLocation
                     instance
-                    Audience.Arch
+                    (Audience "arch")
 
             // todo - add resource to metrics
 

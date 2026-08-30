@@ -1,5 +1,7 @@
 # AGENTS.md — Alma.Profiler
 
+This repo ships Agent Skill for the `Alma.Profiler` library. Compatible agents discover it automatically; see `.agents/skills/fprofiler/SKILL.md`.
+
 ## Project Purpose
 
 `Alma.Profiler` is an F# NuGet library that provides server-side profiler functionality for web applications. It collects and presents runtime diagnostics — application metadata, git info, resource availability, HTTP query history, and error tracking — as a structured `Profiler.Toolbar` data model that the client-side `fable-profiler` renders as a Symfony-style debug toolbar.
